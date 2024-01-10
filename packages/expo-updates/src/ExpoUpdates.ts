@@ -1,3 +1,5 @@
 import { requireNativeModule } from 'expo-modules-core';
 
-export default requireNativeModule('ExpoUpdates');
+import { ExpoUpdatesModule } from './ExpoUpdatesModule.types';
+
+export default requireNativeModule<ExpoUpdatesModule>('ExpoUpdates');
