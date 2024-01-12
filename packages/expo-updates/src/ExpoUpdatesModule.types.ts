@@ -12,6 +12,9 @@ import {
   UpdatesNativeStateMachineContext,
 } from './Updates.types';
 
+/**
+ * @internal
+ */
 export interface ExpoUpdatesModule
   extends Pick<ProxyNativeModule, 'addListener' | 'removeListeners'> {
   isEmergencyLaunch?: boolean;
