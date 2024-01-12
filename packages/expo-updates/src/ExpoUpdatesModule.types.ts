@@ -34,14 +34,14 @@ export interface ExpoUpdatesModule
   updateId?: string;
   commitTime?: string;
   /**
-   * Android
+   * @platform android
    */
   manifestString?: string;
   /**
-   * iOS
+   * @platform ios
    */
   manifest?: Manifest;
-  localAssets?: { [assetKey: string]: string };
+  localAssets?: Record<string, string>;
 
   reload: () => Promise<void>;
   checkForUpdateAsync: () => Promise<
