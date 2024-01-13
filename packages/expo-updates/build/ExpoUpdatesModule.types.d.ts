@@ -1,5 +1,8 @@
 import { ProxyNativeModule } from 'expo-modules-core';
 import { Manifest, UpdateCheckResultAvailable, UpdateCheckResultNotAvailable, UpdateCheckResultRollBack, UpdateFetchResultRollBackToEmbedded, UpdateFetchResultFailure, UpdateFetchResultSuccess, UpdatesLogEntry, UpdatesNativeStateMachineContext } from './Updates.types';
+/**
+ * @internal
+ */
 export interface ExpoUpdatesModule extends Pick<ProxyNativeModule, 'addListener' | 'removeListeners'> {
     isEmergencyLaunch?: boolean;
     isEmbeddedLaunch: boolean;
@@ -18,16 +21,14 @@ export interface ExpoUpdatesModule extends Pick<ProxyNativeModule, 'addListener'
     updateId?: string;
     commitTime?: string;
     /**
-     * Android
+     * @platform android
      */
     manifestString?: string;
     /**
-     * iOS
+     * @platform ios
      */
     manifest?: Manifest;
-    localAssets?: {
-        [assetKey: string]: string;
-    };
+    localAssets?: Record<string, string>;
     reload: () => Promise<void>;
     checkForUpdateAsync: () => Promise<UpdateCheckResultRollBack | (Omit<UpdateCheckResultAvailable, 'manifest'> & ({
         manifestString: string;
